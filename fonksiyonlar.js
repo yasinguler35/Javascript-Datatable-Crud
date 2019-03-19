@@ -15,6 +15,7 @@ class fonk{
             kisiler.yas=yasim.value;
             
             Storage.storagekaydet(kisiler);
+            this.textbosalt();
             uyariVer("success","Kayıt Başarılı");
         }
        e.preventDefault();
@@ -22,7 +23,12 @@ class fonk{
     static addEventListener(){
         submit.addEventListener("click",this.kaydetme);
     }
-
+    
+    static textbosalt(){
+        adim.value="";
+        soyadim.value="";
+        yasim.value="";
+    }
     
 
 }

@@ -18,6 +18,7 @@ dataobje.forEach((index) => {
 $(document).ready(function datatable() {
    let isimal;
    let soyadal;
+   let yasal;
    let table=$('#example').DataTable( {
        data: dizi,
        columns: [
@@ -46,13 +47,18 @@ $(document).ready(function datatable() {
      $('#example tbody').on( 'click', 'tr', function (e) {
       if ( $(this).hasClass('selected') ) {
           $(this).removeClass('selected');
-          console.log(e.target.parentElement.childNodes[0].textContent,e.target.parentElement)
+         //  console.log(e.target.parentElement.childNodes[0].textContent,e.target.parentElement)
+         fonk.textbosalt();
       }
       else {
           table.$('tr.selected').removeClass('selected');
           $(this).addClass('selected');
           isimal=e.target.parentElement.childNodes[0].textContent;
           soyadal=e.target.parentElement.childNodes[1].textContent;
+          yasal=e.target.parentElement.childNodes[2].textContent;
+          adim.value=isimal;
+          soyadim.value=soyadal;
+          yasim.value=yasal;
       }
   } );
 
@@ -61,7 +67,7 @@ $(document).ready(function datatable() {
          table.row('.selected').remove().draw( false );
          console.log(isimal,soyadal);
          Storage.tiklananKisiSilStorage(isimal,soyadal);
-
+         fonk.textbosalt();
   } );
    // Otomatik click içim
    // $('#addRow').click();

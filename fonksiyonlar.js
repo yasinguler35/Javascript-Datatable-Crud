@@ -1,7 +1,7 @@
 const adim=document.getElementById("ad");
 const soyadim=document.getElementById("soyad");
 const yasim=document.getElementById("yas");
-const submit=document.getElementById("kaydet");
+const kaydet=document.getElementById("kaydet");
 
 class fonk{
 
@@ -20,8 +20,12 @@ class fonk{
         }
        e.preventDefault();
     }
+    static guncelleme(isimal,soyadal,yasal,sorguisim,sorgusoyad){
+        Storage.tiklananKisiGuncelleStorage(isimal,soyadal,yasal,sorguisim,sorgusoyad);
+    }
     static addEventListener(){
-        submit.addEventListener("click",this.kaydetme);
+        kaydet.addEventListener("click",this.kaydetme);
+        // guncelle.addEventListener("click",this.guncelleme);
     }
     
     static textbosalt(){

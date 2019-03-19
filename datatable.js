@@ -1,9 +1,6 @@
 const kisiler=new Kisial();
 //submit butonu click evebti çağrılıyor
 fonk.addEventListener();
-console.log(Storage.storageal().forEach((eleman,index) => {
-  console.log(eleman.ad,eleman.soyad,index); 
-}));
 const dataobje=JSON.parse(localStorage.getItem("kisinesnesi"));
 
 
@@ -19,6 +16,7 @@ $(document).ready(function datatable() {
    let isimal;
    let soyadal;
    let yasal;
+
    let table=$('#example').DataTable( {
        data: dizi,
        columns: [
@@ -48,6 +46,7 @@ $(document).ready(function datatable() {
       if ( $(this).hasClass('selected') ) {
           $(this).removeClass('selected');
          //  console.log(e.target.parentElement.childNodes[0].textContent,e.target.parentElement)
+
          fonk.textbosalt();
       }
       else {
@@ -59,16 +58,21 @@ $(document).ready(function datatable() {
           adim.value=isimal;
           soyadim.value=soyadal;
           yasim.value=yasal;
+      
       }
   } );
 
   $('#button').click( function (e) {
-   
+        
          table.row('.selected').remove().draw( false );
-         console.log(isimal,soyadal);
+
          Storage.tiklananKisiSilStorage(isimal,soyadal);
          fonk.textbosalt();
   } );
+  $('#guncelleme').click( function (e) {
+
+      fonk.guncelleme(adim.value,soyadim.value,yasim.value,isimal,soyadal);
+} );
    // Otomatik click içim
    // $('#addRow').click();
    // $('#example tbody').on( 'click', 'tr', function (e) {

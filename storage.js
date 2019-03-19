@@ -26,5 +26,16 @@ class Storage{
     
         localStorage.setItem("kisinesnesi",JSON.stringify(kisisil));
     }
+    static tiklananKisiGuncelleStorage(isimal,soyadal,yasal,sorguisim,sorgusoyad) {
+        let kisiguncelle=this.storageal();
+        kisiguncelle.forEach(function(element,index) {
+            if (element.ad===sorguisim && element.soyad===sorgusoyad) {
+                console.log({ad:isimal,soyad:soyadal,yas:yasal});
+                kisiguncelle[index]={ad:isimal,soyad:soyadal,yas:yasal};
+            }
+        });
+    
+        localStorage.setItem("kisinesnesi",JSON.stringify(kisiguncelle));
+    }
 
 }

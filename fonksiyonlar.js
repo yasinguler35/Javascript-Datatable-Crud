@@ -6,7 +6,7 @@ const kaydet=document.getElementById("kaydet");
 class fonk{
 
     static kaydetme(e) {
-        if (adim.value==="" && soyadim.value==="" && yasim.value==="") {
+        if (adim.value==="" || soyadim.value==="" || yasim.value==="") {
             uyariVer("danger","Boş geçilemez");
 
         } else {
@@ -15,7 +15,7 @@ class fonk{
             kisiler.yas=yasim.value;
             
             Storage.storagekaydet(kisiler);
-            this.textbosalt();
+      
             uyariVer("success","Kayıt Başarılı");
         }
        e.preventDefault();

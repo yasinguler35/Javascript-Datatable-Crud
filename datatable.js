@@ -16,14 +16,14 @@ $(document).ready(function datatable() {
    let isimal;
    let soyadal;
    let yasal;
-
-   let table=$('#example').DataTable( {
+   let guncellemetr;
+  let table=$('#example').DataTable( {
        data: dizi,
        columns: [
            { title: "Ad" },
            { title: "Soyad" },
            { title: "Yaş" }
-       ],
+       ],      
       //  "initComplete": function () {
       //      var api = this.api();
       //      api.$('td').click( function () {
@@ -32,20 +32,22 @@ $(document).ready(function datatable() {
       //  }
    } );
 
-      $('#kaydet').on( 'click', function () {
-            if(adim.value!=="" && soyadim.value!=="" && yasim.value!==""){
+      $('#kaydet').on( 'click', function (e) {
+            if(adim.value!=="" || soyadim.value!=="" || yasim.value!==""){
                table.row.add( [
                   adim.value,
                   soyadim.value,
                   yasim.value,
               ] ).draw( true ); 
             }
-      
+            fonk.textbosalt();
+            e.preventDefault();
+             
      } );
      $('#example tbody').on( 'click', 'tr', function (e) {
       if ( $(this).hasClass('selected') ) {
           $(this).removeClass('selected');
-         //  console.log(e.target.parentElement.childNodes[0].textContent,e.target.parentElement)
+        
 
          fonk.textbosalt();
       }
@@ -58,7 +60,8 @@ $(document).ready(function datatable() {
           adim.value=isimal;
           soyadim.value=soyadal;
           yasim.value=yasal;
-      
+          guncellemetr=e.target.parentElement;
+          console.log(e.target.parentElement);
       }
   } );
 
@@ -70,8 +73,16 @@ $(document).ready(function datatable() {
          fonk.textbosalt();
   } );
   $('#guncelleme').click( function (e) {
-
+   if(adim.value!=="" || soyadim.value!=="" || yasim.value!==""){
       fonk.guncelleme(adim.value,soyadim.value,yasim.value,isimal,soyadal);
+      guncellemetr.childNodes[0].textContent=adim.value;
+      guncellemetr.childNodes[1].textContent=soyadim.value;
+      guncellemetr.childNodes[2].textContent=yasim.value;
+   }
+
+      // var temp = table.row(5).data();
+      // temp[0] = 'Tom';
+      // table.row(5).data(temp).draw();
 } );
    // Otomatik click içim
    // $('#addRow').click();
